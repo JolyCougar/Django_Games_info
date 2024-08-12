@@ -32,3 +32,11 @@ class GameModel(models.Model):
     url = models.SlugField(max_length=130, unique=True)
     publisher = models.ManyToManyField(PublisherModel)
     developer = models.ManyToManyField(DeveloperModel)
+
+
+class MovieShot(models.Model):
+    """ Images from Movie """
+    title = models.CharField("Title", max_length=100)
+    description = models.TextField("Description")
+    image = models.ImageField("Image", upload_to="games/images")
+    game = models.ForeignKey(GenresModel, verbose_name="Game", on_delete=models.CASCADE)
