@@ -34,7 +34,7 @@ class GameModel(models.Model):
     developer = models.ManyToManyField(DeveloperModel)
 
 
-class MovieShot(models.Model):
+class GamesImagesModel(models.Model):
     """ Images from Movie """
     title = models.CharField("Title", max_length=100)
     description = models.TextField("Description")
