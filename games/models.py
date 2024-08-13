@@ -46,7 +46,7 @@ class Game(models.Model):
     name = models.CharField("name", max_length=100)
     description = models.TextField("Description")
     poster = models.ImageField("Poster", upload_to=game_poster_directory_path)
-    release = models.DateTimeField("Release game", default=date.today)
+    release = models.DateField("Release game", default=date.today)
     game_platform = models.ForeignKey(GamePlatform, on_delete=models.CASCADE)
     url = models.SlugField(max_length=130, unique=True)
     publisher = models.ManyToManyField(Publisher, verbose_name="publisher")
@@ -66,7 +66,7 @@ def game_images_directory_path(instance: "GamesImages", filename: str) -> str:
 
 
 class GamesImages(models.Model):
-    """ Images from Movie """
+    """ Images from Game """
     title = models.CharField("Title", max_length=100)
     description = models.TextField("Description")
     image = models.ImageField("Image", upload_to=game_images_directory_path)

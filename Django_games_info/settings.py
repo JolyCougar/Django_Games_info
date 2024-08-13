@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'Django_games_info.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'gamebase',
+        'NAME': 'game_base',
         'USER': 'postgres',
         'PASSWORD': '123456',
         'HOST': 'localhost',
