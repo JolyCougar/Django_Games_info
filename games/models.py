@@ -4,8 +4,8 @@ from django.db import models
 
 
 def game_poster_directory_path(instance: "Game", filename: str) -> str:
-    return "game/game_{pk}/poster/{filename}".format(
-        pk=instance.pk,
+    return "game/{pk}/poster/{filename}".format(
+        pk=instance.name,
         filename=filename,
     )
 
@@ -47,7 +47,7 @@ class Game(models.Model):
     description = models.TextField("Description")
     poster = models.ImageField("Poster", upload_to=game_poster_directory_path)
     release = models.DateField("Release game", default=date.today)
-    game_platform = models.ForeignKey(GamePlatform, on_delete=models.CASCADE)
+    game_platform = models.ManyToManyField(GamePlatform)
     url = models.SlugField(max_length=130, unique=True)
     publisher = models.ManyToManyField(Publisher, verbose_name="publisher")
     developer = models.ManyToManyField(Developer, verbose_name="developer")
@@ -59,8 +59,8 @@ class Game(models.Model):
 
 
 def game_images_directory_path(instance: "GamesImages", filename: str) -> str:
-    return "games/game_{pk}/images/{filename}".format(
-        pk=instance.game.pk,
+    return "games/{pk}/images/{filename}".format(
+        pk=instance.game.name,
         filename=filename,
     )
 

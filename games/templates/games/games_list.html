@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Games List</title>
+</head>
+<body>
+{% for game in game_list %}
+    <p>-----------------------------------</p>
+    <p><img src="{{ game.poster.url }}" width="200" height="200" alt=""></p>
+    <p>Name games:{{ game.name }}</p>
+    <p>Descriptions:{{ game.description }}</p>
+    <p>Genres:{% for genre in game.genres.all %}
+        {{ genre.name }}
+    	
+    {% endfor %}
+    </p>
+    <p>Developer:{% for developer in game.developer.all %}
+    	{{ developer.name }}
+    {% endfor %}
+    </p>
+    <p>------------------------------------</p>
+	
+{% endfor %}
+
+</body>
+</html>
