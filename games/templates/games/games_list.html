@@ -8,7 +8,8 @@
 {% for game in game_list %}
     <p>-----------------------------------</p>
     <p><img src="{{ game.poster.url }}" width="200" height="200" alt=""></p>
-    <p>Name games:{{ game.name }}</p>
+   
+    <p>Name games: <a href="{{ game.get_absolute_url }}">{{ game.name }}</a></p>
     <p>Descriptions:{{ game.description }}</p>
     <p>Genres:{% for genre in game.genres.all %}
         {{ genre.name }}

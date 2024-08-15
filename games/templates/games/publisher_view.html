@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Publisher</title>
+</head>
+<body>
+<img src="{{ publisher.logo.url }}" alt="" width="300" height="300">
+<p>Publisher: {{ publisher.name }}</p>
+<p>Description : {{ publisher.description }}</p>
+<p>Games : {% for game in publisher.game_publisher.all %}
+	{{ game.name }}
+{% endfor %}</p>
+</body>
+</html>

@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.db import models
+from django.urls import reverse
 
 
 def game_poster_directory_path(instance: "Game", filename: str) -> str:
@@ -10,9 +11,16 @@ def game_poster_directory_path(instance: "Game", filename: str) -> str:
     )
 
 
+def logo_directory_path(instance: "Publisher", filename: str) -> str:
+    return "logo_company/{pk}/{filename}".format(
+        pk=instance.name,
+        filename=filename,
+    )
+
+
 class Genres(models.Model):
     name = models.CharField("name", max_length=30)
-    description = models.TextField("Description")
+    description = models.TextField("Description", null=True)
     url = models.SlugField(max_length=160, unique=True)
 
     def __str__(self):
@@ -28,34 +36,45 @@ class GamePlatform(models.Model):
 
 class Developer(models.Model):
     name = models.CharField("name", max_length=30)
-    description = models.TextField("Description")
+    logo = models.ImageField("Logo", upload_to=logo_directory_path, null=True)
+    description = models.TextField("Description", null=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('developer_detail', kwargs={"slug": self.name})
 
 
 class Publisher(models.Model):
     name = models.CharField("name", max_length=30)
-    description = models.TextField("Descriptions")
+    logo = models.ImageField("Logo", upload_to=logo_directory_path, null=True)
+    description = models.TextField("Descriptions", null=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('publisher_detail', kwargs={"slug": self.name})
 
 
 class Game(models.Model):
     name = models.CharField("name", max_length=100)
     description = models.TextField("Description")
     poster = models.ImageField("Poster", upload_to=game_poster_directory_path)
-    release = models.DateField("Release game", default=date.today)
-    game_platform = models.ManyToManyField(GamePlatform)
+    release = models.DateField("Release game", default=date.today, null=True)
+    game_platform = models.ManyToManyField(GamePlatform, null=True)
     url = models.SlugField(max_length=130, unique=True)
-    publisher = models.ManyToManyField(Publisher, verbose_name="publisher")
-    developer = models.ManyToManyField(Developer, verbose_name="developer")
+    publisher = models.ManyToManyField(Publisher, verbose_name="publisher", null=True, related_name="game_publisher")
+    developer = models.ManyToManyField(Developer, verbose_name="developer", null=True, related_name="game_developer")
     genres = models.ManyToManyField(Genres, verbose_name="genres")
     draft = models.BooleanField("Draft", default=False)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("game_detail", kwargs={"slug": self.url})
 
 
 def game_images_directory_path(instance: "GamesImages", filename: str) -> str:
@@ -67,8 +86,8 @@ def game_images_directory_path(instance: "GamesImages", filename: str) -> str:
 
 class GamesImages(models.Model):
     """ Images from Game """
-    title = models.CharField("Title", max_length=100)
-    description = models.TextField("Description")
+    title = models.CharField("Title", max_length=100, null=True)
+    description = models.TextField("Description", null=True)
     image = models.ImageField("Image", upload_to=game_images_directory_path)
     game = models.ForeignKey(Game, verbose_name="Game", on_delete=models.CASCADE)
 

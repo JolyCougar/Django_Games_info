@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Detail</title>
+</head>
+<body>
+<p><img src="{{ game.poster.url }}" width="300" height="300" alt=""></p>
+<p>Name: {{ game.name }}</p>
+<p>Genres: {% for genre in game.genres.all %}
+    {{ genre.name }}
+{% endfor %}</p>
+<p>Descriptions: {{ game.description }}</p>
+<p>Developer:{% for develop in game.developer.all %}
+    <a href="{{ develop.get_absolute_url }}">{{ develop.name }}</a>
+{% endfor %}</p>
+<p>Publisher: {% for publisher in game.publisher.all %}
+	<a href="{{ publisher.get_absolute_url }}">{{ publisher.name }}</a>
+{% endfor %}</p>
+<p>Game Platform:{% for platform in game.game_platform.all %}
+    {{ platform }}
+{% endfor %}</p>
+<p>Release:{{ game.release }}</p>
+
+</body>
+</html>
