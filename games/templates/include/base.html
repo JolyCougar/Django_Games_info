@@ -32,9 +32,11 @@
     </div>
     <ol class="breadcrumb editContent">
         <li class="breadcrumb-item">
-            <a href="index.html" class="editContent">Home</a>
+            <a href="{% url 'games_list' %}" class="editContent">Home</a>
         </li>
-        <li class="breadcrumb-item active editContent">Single Page</li>
+        <li class="breadcrumb-item active editContent">{% block title_games %}
+        	
+        {% endblock %}</li>
     </ol>
     {% block content %}
         Base Body
