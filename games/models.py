@@ -23,14 +23,14 @@ class Genres(models.Model):
     description = models.TextField("Description", null=True)
     url = models.SlugField(max_length=160, unique=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
 class GamePlatform(models.Model):
     name = models.CharField("name", max_length=30)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -39,7 +39,7 @@ class Developer(models.Model):
     logo = models.ImageField("Logo", upload_to=logo_directory_path, null=True)
     description = models.TextField("Description", null=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
     def get_absolute_url(self):
@@ -51,7 +51,7 @@ class Publisher(models.Model):
     logo = models.ImageField("Logo", upload_to=logo_directory_path, null=True)
     description = models.TextField("Descriptions", null=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
     def get_absolute_url(self):
@@ -70,11 +70,17 @@ class Game(models.Model):
     genres = models.ManyToManyField(Genres, verbose_name="genres")
     draft = models.BooleanField("Draft", default=False)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
     def get_absolute_url(self):
         return reverse("game_detail", kwargs={"slug": self.url})
+
+    @property
+    def description_short(self) -> str:
+        if len(self.description) < 30:
+            return self.description
+        return self.description[:30] + "..."
 
 
 def game_images_directory_path(instance: "GamesImages", filename: str) -> str:
@@ -96,7 +102,7 @@ class RatingStar(models.Model):
     """ Rating star """
     value = models.PositiveSmallIntegerField("Value", default=0)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.value}'
 
     class Meta:
@@ -129,7 +135,7 @@ class Review(models.Model):
                                blank=True, related_name="children")
     movie = models.ForeignKey(Game, verbose_name="Movie", on_delete=models.CASCADE, related_name="reviews")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name} - {self.movie}"
 
     class Meta:
