@@ -1,28 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Games List</title>
-</head>
-<body>
-{% for game in game_list %}
-    <p>-----------------------------------</p>
-    <p><img src="{{ game.poster.url }}" width="200" height="200" alt=""></p>
-   
-    <p>Name games: <a href="{{ game.get_absolute_url }}">{{ game.name }}</a></p>
-    <p>Descriptions:{{ game.description }}</p>
-    <p>Genres:{% for genre in game.genres.all %}
-        {{ genre.name }}
-    	
-    {% endfor %}
-    </p>
-    <p>Developer:{% for developer in game.developer.all %}
-    	{{ developer.name }}
-    {% endfor %}
-    </p>
-    <p>------------------------------------</p>
-	
-{% endfor %}
+{% extends 'games/main.html' %}
 
-</body>
-</html>
+{% block title %}
+	Главная страница GamesInfo
+{% endblock %}
+
+{% block games %}
+    <div class="left-ads-display col-lg-9">
+        <div class="row">
+            {% for games in game_list %}
+                <div class="col-md-4 product-men">
+                    <div class="product-shoe-info editContent text-center mt-lg-4">
+                        <div class="men-thumb-item">
+                            <img src="{{ games.poster.url }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="item-info-product">
+                            <h4 class="">
+                                <a href="{{ games.get_absolute_url }}" class="editContent">
+                                    {{ games.name }}
+                                </a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <span class="money editContent">{{ games.description }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="stars">
+                            <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                            <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true"></span></a>
+                            </li>
+                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true"></span></a>
+                            </li>
+                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="grid-img-right mt-4 text-right bg bg1">
+            {% include 'include/pagination.html' %}
+        </div>
+    </div>
+{% endblock games %}
