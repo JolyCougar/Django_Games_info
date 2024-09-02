@@ -1,15 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Developer</title>
-</head>
-<body>
-<img src="{{ developer.logo.url }}" alt="" width="300" height="300">
-<p>Name: {{ developer.name }}</p>
-<p>Description: {{ developer.description }}</p>
-<p>Games : {% for games in developer.game_developer.all %}
-    {{ games.name }}
-{% endfor %}</p>
-</body>
-</html>
+{% extends 'games/main.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ actor.name }}
+{% endblock %}
+
+{% block container %}
+    <div class="container py-md-3">
+{% endblock container %}
+
+{% block sidebar %}
+    <div class="side-bar col-lg-4">
+{% endblock sidebar %}
+
+{% block games %}
+     <div class="left-ads-display col-lg-8">
+        <div class="row">
+            <div class="desc1-left col-md-6">
+                <img src="{{ developer.logo.url }}" class="img-fluid" alt="">
+            </div>
+            <div class="desc1-right col-md-6 pl-lg-4">
+                <h3 class="editContent" style="outline: none; cursor: inherit;">
+                    {{ developer.name }}
+                </h3>
+                <h5 class="editContent"></h5>
+                
+            </div>
+        </div>
+        <div class="row sub-para-w3layouts mt-5">
+
+            <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
+                About Developer: {{ developer.name }}</h3>
+            <p class="editContent">
+                {{ developer.description|safe }}
+            </p>
+        </div>
+        <hr>
+    </div>
+{% endblock %}

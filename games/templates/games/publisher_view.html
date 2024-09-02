@@ -1,15 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Publisher</title>
-</head>
-<body>
-<img src="{{ publisher.logo.url }}" alt="" width="300" height="300">
-<p>Publisher: {{ publisher.name }}</p>
-<p>Description : {{ publisher.description }}</p>
-<p>Games : {% for game in publisher.game_publisher.all %}
-	{{ game.name }}
-{% endfor %}</p>
-</body>
-</html>
+{% extends 'games/main.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ actor.name }}
+{% endblock %}
+
+{% block container %}
+    <div class="container py-md-3">
+{% endblock container %}
+
+{% block sidebar %}
+    <div class="side-bar col-lg-4">
+{% endblock sidebar %}
+
+{% block games %}
+     <div class="left-ads-display col-lg-8">
+        <div class="row">
+            <div class="desc1-left col-md-6">
+                <img src="{{ publisher.logo.url }}" class="img-fluid" alt="">
+            </div>
+            <div class="desc1-right col-md-6 pl-lg-4">
+                <h3 class="editContent" style="outline: none; cursor: inherit;">
+                    {{ publisher.name }}
+                </h3>
+                <h5 class="editContent"></h5>
+                
+            </div>
+        </div>
+        <div class="row sub-para-w3layouts mt-5">
+
+            <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
+                About Publisher: {{ publisher.name }}</h3>
+            <p class="editContent">
+                {{ publisher.description|safe }}
+            </p>
+        </div>
+        <hr>
+    </div>
+{% endblock %}
