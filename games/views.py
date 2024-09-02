@@ -1,8 +1,8 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 from django.http import HttpResponse
 from .forms import RatingForm
+from django.db.models import Avg
 
 from .models import Game, Publisher, Developer, Rating
 
@@ -18,9 +18,17 @@ class GameDetailView(DetailView):
     queryset = Game.objects.filter(draft=False)
     slug_field = "url"
 
+    def get_user_stars(self):
+        print()
+
+        stars = '0'
+        return stars
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["star_form"] = RatingForm()
+        context['star'] = Game.objects.aggregate(avg=Avg('ratings__star'))
+        print(context)
         return context
 
 
