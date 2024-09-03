@@ -1,7 +1,8 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
+from django.shortcuts import redirect
 from django.http import HttpResponse
-from .forms import RatingForm
+from .forms import RatingForm, ReviewForm
 from django.db.models import Avg
 
 from .models import Game, Publisher, Developer, Rating
@@ -18,17 +19,11 @@ class GameDetailView(DetailView):
     queryset = Game.objects.filter(draft=False)
     slug_field = "url"
 
-    def get_user_stars(self):
-        print()
-
-        stars = '0'
-        return stars
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["star_form"] = RatingForm()
         context['star'] = Game.objects.aggregate(avg=Avg('ratings__star'))
-        print(context)
+        context["form"] = ReviewForm()
         return context
 
 
@@ -65,3 +60,17 @@ class AddStarRating(View):
             return HttpResponse(status=201)
         else:
             return HttpResponse(status=400)
+
+
+class AddReview(View):
+    """ Review for game """
+    def post(self, request, pk):
+        form = ReviewForm(request.POST)
+        game = Game.objects.get(id=pk)
+        if form.is_valid():
+            form = form.save(commit=False)
+            if request.POST.get("parent", None):
+                form.parent_id = int(request.POST.get("parent"))
+            form.game = game
+            form.save()
+        return redirect(game.get_absolute_url())

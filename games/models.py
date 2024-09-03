@@ -76,6 +76,9 @@ class Game(models.Model):
     def get_absolute_url(self):
         return reverse("game_detail", kwargs={"slug": self.url})
 
+    def get_review(self):
+        return self.review_set.filter(parent__isnull=True)
+
     @property
     def description_short(self) -> str:
         if len(self.description) < 30:
@@ -132,11 +135,11 @@ class Review(models.Model):
     text = models.TextField("Text", max_length=5000)
     parent = models.ForeignKey("self", verbose_name="Parent",
                                on_delete=models.SET_NULL, null=True,
-                               blank=True, related_name="children")
-    movie = models.ForeignKey(Game, verbose_name="Movie", on_delete=models.CASCADE, related_name="reviews")
+                               blank=True)
+    game = models.ForeignKey(Game, verbose_name="Game", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return f"{self.name} - {self.movie}"
+        return f"{self.name} - {self.game}"
 
     class Meta:
         verbose_name = "Review"

@@ -63,7 +63,7 @@ class RatingAdmin(admin.ModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     """ Reviews """
-    list_display = ("name", "email", "parent", "movie", "id")
+    list_display = ("name", "email", "parent", "game", "id")
     readonly_fields = ("name", "email")
 
 
