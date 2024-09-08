@@ -1,20 +1,32 @@
 from django.views.generic import ListView, DetailView
+from django.db.models import Q
 from django.views.generic.base import View
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from .forms import RatingForm, ReviewForm
 from django.db.models import Avg
 
-from .models import Game, Publisher, Developer, Rating
+from .models import Game, Publisher, Developer, Rating, Genres, GamePlatform
 
 
-class GamesView(ListView):
+class GenreYear:
+    """ Genres and year of games """
+
+    def get_genres(self):
+        print(Genres.objects.all())
+        return Genres.objects.all()
+
+    def get_platform(self):
+        return GamePlatform.objects.all()
+
+
+class GamesView(GenreYear,ListView):
     model = Game
     queryset = Game.objects.filter(draft=False).all()
-    template_name = "games/games_list.html"
+    template_name = "games/game_list.html"
 
 
-class GameDetailView(DetailView):
+class GameDetailView(GenreYear, DetailView):
     model = Game
     queryset = Game.objects.filter(draft=False)
     slug_field = "url"
@@ -27,13 +39,13 @@ class GameDetailView(DetailView):
         return context
 
 
-class PublisherView(DetailView):
+class PublisherView(GenreYear,DetailView):
     model = Publisher
     template_name = "games/publisher_view.html"
     slug_field = "name"
 
 
-class DeveloperView(DetailView):
+class DeveloperView(GenreYear,DetailView):
     model = Developer
     template_name = "games/developer_view.html"
     slug_field = "name"
@@ -64,6 +76,7 @@ class AddStarRating(View):
 
 class AddReview(View):
     """ Review for game """
+
     def post(self, request, pk):
         form = ReviewForm(request.POST)
         game = Game.objects.get(id=pk)
@@ -74,3 +87,33 @@ class AddReview(View):
             form.game = game
             form.save()
         return redirect(game.get_absolute_url())
+
+
+class FilterGamesView(GenreYear, ListView):
+    """ Filter games """
+    paginate_by = 2
+
+    def get_queryset(self):
+        queryset = Game.objects.filter(Q(game_platform__in=self.request.GET.getlist("game_platform")) |
+                                       Q(genres__in=self.request.GET.getlist("genre"))
+                                       ).distinct()
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["game_platform"] = ''.join([f"year={x}&" for x in self.request.GET.getlist("game_platform")])
+        context["genre"] = ''.join([f"genre={x}&" for x in self.request.GET.getlist("genre")])
+        return context
+
+
+class Search(ListView):
+    """ Search games """
+    paginate_by = 2
+
+    def get_queryset(self):
+        return Game.objects.filter(name__icontains=self.request.GET.get("q"))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["q"] = f'q={self.request.GET.get("q")}&'
+        return context
