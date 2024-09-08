@@ -106,12 +106,15 @@ class FilterGamesView(GenreYear, ListView):
         return context
 
 
-class Search(ListView):
+class Search(GenreYear, ListView):
     """ Search games """
     paginate_by = 2
 
     def get_queryset(self):
-        return Game.objects.filter(name__icontains=self.request.GET.get("q"))
+        q = self.request.GET.get('q')
+        a = "".join(q[0].upper()) + q[1:]
+        return Game.objects.filter(name__icontains=a)
+
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
