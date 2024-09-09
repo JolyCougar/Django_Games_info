@@ -24,6 +24,11 @@ class GamesView(GenrePlatform, ListView):
     queryset = Game.objects.filter(draft=False).all()
     template_name = "games/game_list.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['star'] = Game.objects.aggregate(avg=Avg('ratings__star'))
+        return context
+
 
 class GameDetailView(GenrePlatform, DetailView):
     model = Game

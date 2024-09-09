@@ -1,7 +1,7 @@
 {% extends 'games/main.html' %}
 
 {% block title %}
-	Главная страница GamesInfo
+    Главная страница GamesInfo
 {% endblock %}
 
 {% block games %}
@@ -9,31 +9,36 @@
         <div class="row">
             {% for games in game_list %}
                 <div class="col-md-4 product-men">
-                    <div class="product-shoe-info editContent text-center mt-lg-4">
-                        <div class="men-thumb-item">
-                            <img src="{{ games.poster.url }}" class="img-fluid" alt="">
-                        </div>
-                        <div class="item-info-product">
-                            <h4 class="">
-                                <a href="{{ games.get_absolute_url }}" class="editContent">
-                                    {{ games.name }}
-                                </a>
-                            </h4>
+                <div class="product-shoe-info editContent text-center mt-lg-4">
+                <div class="men-thumb-item">
+                    <img src="{{ games.poster.url }}" class="img-fluid" alt="">
+                </div>
+                <div class="item-info-product">
+                    <h4 class="">
+                        <a href="{{ games.get_absolute_url }}" class="editContent">
+                            {{ games.name }}
+                        </a>
+                    </h4>
 
-                            <div class="product_price">
-                                <div class="grid-price">
-                                    <span class="money editContent">{{ games.description_short }}</span>
-                                </div>
-                            </div>
+                    <div class="product_price">
+                        <div class="grid-price">
+                        <span class="money editContent">
+                        Платформа:
+                        </span>
+                            {% for platform in games.game_platform.all %}
+                                <span class="money editContent">
+                                    {{ platform }}
+                                </span>{% endfor %}
                         </div>
-                        <ul class="stars">
-                            {% for genre in games.game_platform.all %}
-                            	<li>{{ genre.name }} </li>
-                            {% endfor %}
-                        </ul>
                     </div>
                 </div>
+                <ul class="stars">
+                <li>Рейтинг:{{ star.avg | floatformat }}<span class="fa fa-star" aria-hidden="true"></span></li>
             {% endfor %}
+            </ul>
+            </div>
+            </div>
+
         </div>
         <div class="grid-img-right mt-4 text-right bg bg1">
             {% include 'include/pagination.html' %}
