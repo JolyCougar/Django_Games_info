@@ -9,20 +9,23 @@ from django.db.models import Avg
 from .models import Game, Publisher, Developer, Rating, Genres, GamePlatform
 
 
-class GenreYear:
-    """ Genres and year of games """
+class GenrePlatform:
+    """ Genres and platform of games """
+
+    def get_genres(self):
+        return Genres.objects.all()
 
     def get_platform(self):
         return GamePlatform.objects.all()
 
 
-class GamesView(GenreYear, ListView):
+class GamesView(GenrePlatform, ListView):
     model = Game
     queryset = Game.objects.filter(draft=False).all()
     template_name = "games/game_list.html"
 
 
-class GameDetailView(GenreYear, DetailView):
+class GameDetailView(GenrePlatform, DetailView):
     model = Game
     queryset = Game.objects.filter(draft=False)
     slug_field = "url"
@@ -35,13 +38,13 @@ class GameDetailView(GenreYear, DetailView):
         return context
 
 
-class PublisherView(GenreYear, DetailView):
+class PublisherView(GenrePlatform, DetailView):
     model = Publisher
     template_name = "games/publisher_view.html"
     slug_field = "name"
 
 
-class DeveloperView(GenreYear, DetailView):
+class DeveloperView(GenrePlatform, DetailView):
     model = Developer
     template_name = "games/developer_view.html"
     slug_field = "name"
@@ -85,7 +88,7 @@ class AddReview(View):
         return redirect(game.get_absolute_url())
 
 
-class FilterGamesView(GenreYear, ListView):
+class FilterGamesView(GenrePlatform, ListView):
     """ Filter games """
     paginate_by = 2
 
@@ -102,7 +105,7 @@ class FilterGamesView(GenreYear, ListView):
         return context
 
 
-class Search(GenreYear, ListView):
+class Search(GenrePlatform, ListView):
     """ Search games """
     paginate_by = 2
 
