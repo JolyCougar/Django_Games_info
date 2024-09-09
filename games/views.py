@@ -12,15 +12,11 @@ from .models import Game, Publisher, Developer, Rating, Genres, GamePlatform
 class GenreYear:
     """ Genres and year of games """
 
-    def get_genres(self):
-        print(Genres.objects.all())
-        return Genres.objects.all()
-
     def get_platform(self):
         return GamePlatform.objects.all()
 
 
-class GamesView(GenreYear,ListView):
+class GamesView(GenreYear, ListView):
     model = Game
     queryset = Game.objects.filter(draft=False).all()
     template_name = "games/game_list.html"
@@ -39,13 +35,13 @@ class GameDetailView(GenreYear, DetailView):
         return context
 
 
-class PublisherView(GenreYear,DetailView):
+class PublisherView(GenreYear, DetailView):
     model = Publisher
     template_name = "games/publisher_view.html"
     slug_field = "name"
 
 
-class DeveloperView(GenreYear,DetailView):
+class DeveloperView(GenreYear, DetailView):
     model = Developer
     template_name = "games/developer_view.html"
     slug_field = "name"
@@ -114,7 +110,6 @@ class Search(GenreYear, ListView):
         q = self.request.GET.get('q')
         a = "".join(q[0].upper()) + q[1:]
         return Game.objects.filter(name__icontains=a)
-
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
