@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from .forms import RatingForm, ReviewForm
 from django.db.models import Avg
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Game, Publisher, Developer, Rating, Genres, GamePlatform
 
@@ -78,7 +79,7 @@ class AddStarRating(View):
             return HttpResponse(status=400)
 
 
-class AddReview(View):
+class AddReview(LoginRequiredMixin, View):
     """ Review for game """
 
     def post(self, request, pk):
@@ -110,9 +111,9 @@ class FilterGamesView(GenrePlatform, ListView):
         return context
 
 
-class Search(GenrePlatform, ListView):
+class Search(GenrePlatform, ListView, LoginRequiredMixin):
     """ Search games """
-    paginate_by = 2
+    paginate_by = 5
 
     def get_queryset(self):
         q = self.request.GET.get('q')
