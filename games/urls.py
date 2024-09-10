@@ -3,7 +3,8 @@ from django.urls import path
 from .views import (GamesView, GameDetailView,
                     PublisherView, DeveloperView,
                     AddStarRating, AddReview,
-                    FilterGamesView, Search)
+                    FilterGamesView, Search,
+                    AccountInfo)
 
 urlpatterns = [
     path("", GamesView.as_view(), name="games_list"),
@@ -14,4 +15,5 @@ urlpatterns = [
     path("publisher/<str:slug>/", PublisherView.as_view(), name="publisher_detail"),
     path("developer/<str:slug>/", DeveloperView.as_view(), name="developer_detail"),
     path("review/<int:pk>/", AddReview.as_view(), name="add_review"),
+    path("about-me/<int:pk>/", AccountInfo.as_view(), name='about-me'),
 ]

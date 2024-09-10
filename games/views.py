@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from .forms import RatingForm, ReviewForm
 from django.db.models import Avg
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 
 from .models import Game, Publisher, Developer, Rating, Genres, GamePlatform
 
@@ -107,6 +108,7 @@ class FilterGamesView(GenrePlatform, ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context["game_platform"] = ''.join([f"year={x}&" for x in self.request.GET.getlist("game_platform")])
+        context['star'] = Game.objects.aggregate(avg=Avg('ratings__star'))
         context["genre"] = ''.join([f"genre={x}&" for x in self.request.GET.getlist("genre")])
         return context
 
@@ -124,3 +126,9 @@ class Search(GenrePlatform, ListView, LoginRequiredMixin):
         context = super().get_context_data(*args, **kwargs)
         context["q"] = f'q={self.request.GET.get("q")}&'
         return context
+
+
+class AccountInfo(GenrePlatform, DetailView):
+    queryset = User.objects.all()
+    template_name = "games/account.html"
+    context_object_name = "user"

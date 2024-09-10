@@ -1,0 +1,20 @@
+{% extends 'games/main.html' %}
+
+{% block title %}
+    About {{ user.username }}
+{% endblock title %}
+
+{% block games %}
+    <div>
+        <p>Username: {{ user.username }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }} <a href="{% url 'account_email' %}"
+        >Сменить Email</a> {% if emailaddress.verified %}
+            <span class="verified"> Verified</span>
+        {% else %}
+            <span class="unverified">Unverified</span>
+        {% endif %}</p>
+    </div>
+
+{% endblock games %}
