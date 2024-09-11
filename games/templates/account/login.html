@@ -12,7 +12,7 @@
 
 {% block content %}
 
-<h1>Sign In</h1>
+<h1>Авторизоваться</h1>
 
 {#{% get_providers as socialaccount_providers %}#}
 
@@ -34,8 +34,8 @@ for a {{ site_name }} account and sign in below:</p>
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p>If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.</p>
+<p>Если вы здесь впервые, тогда сначала
+<a href="{{ signup_url }}">зарегистрируйтесь</a>.</p>
 {% endif %}
 
 <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -44,7 +44,7 @@ for a {{ site_name }} account and sign in below:</p>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button class="primaryAction btn1 btn" type="submit">Sign In</button>
+  <button class="primaryAction btn1 btn" type="submit">Войти</button>
 </form>
 
 {% endblock %}
