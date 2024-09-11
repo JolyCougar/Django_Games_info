@@ -15,5 +15,5 @@ urlpatterns = [
     path("publisher/<str:slug>/", PublisherView.as_view(), name="publisher_detail"),
     path("developer/<str:slug>/", DeveloperView.as_view(), name="developer_detail"),
     path("review/<int:pk>/", AddReview.as_view(), name="add_review"),
-    path("about-me/<int:pk>/", AccountInfo.as_view(), name='about-me'),
+    path("account/<int:pk>/", AccountInfo.as_view(), name='account'),
 ]

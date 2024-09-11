@@ -1,19 +1,19 @@
 {% extends 'games/main.html' %}
 
 {% block title %}
-    About {{ user.username }}
+    Об аккаунте {{ user.username }}
 {% endblock title %}
 
 {% block games %}
     <div>
-        <p>Username: {{ user.username }}</p>
-        <p>First name: {{ user.first_name }}</p>
-        <p>Last name: {{ user.last_name }}</p>
+        <p>Логин: {{ user.username }}</p>
+        <p>Имя: {{ user.first_name }}</p>
+        <p>Фамилия: {{ user.last_name }}</p>
         <p>Email: {{ user.email }} <a href="{% url 'account_email' %}"
         >Сменить Email</a> {% if emailaddress.verified %}
-            <span class="verified"> Verified</span>
+            <span class="verified"> Подтвержден</span>
         {% else %}
-            <span class="unverified">Unverified</span>
+            <span class="unverified">Не подтвержден</span>
         {% endif %}</p>
     </div>
 

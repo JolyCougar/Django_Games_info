@@ -22,11 +22,10 @@
                 </li>
                 <li>
                     {% if user.is_authenticated %}
-                        <span style="color: rgb(255, 255, 255)">{{ user.username | upper }}</span>
+                        <a href="{% url 'account' user.pk %}"
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">{{ user.username | upper }}</a>
                         <a href="{% url 'account_logout' %}"
                            style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Выход</a>
-                        <a href="{% url 'about-me' user.pk %}"
-                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Профиль</a>
                     {% else %}
                         <a href="{% url 'account_login' %}"
                            style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Вход</a>
