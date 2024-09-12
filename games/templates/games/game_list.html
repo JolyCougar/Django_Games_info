@@ -1,7 +1,9 @@
 {% extends 'games/main.html' %}
 
+{% load i18n %}
+
 {% block title %}
-    Главная страница GamesInfo
+    {% trans 'Главная страница GamesInfo' %}
 {% endblock %}
 
 {% block games %}
@@ -23,7 +25,7 @@
                     <div class="product_price">
                         <div class="grid-price">
                         <span class="money editContent">
-                        Платформа:
+                        {% trans 'Платформа:' %}
                         </span>
                             {% for platform in games.game_platform.all %}
                                 <span class="money editContent">
@@ -33,7 +35,7 @@
                     </div>
                 </div>
                 <ul class="stars">
-                <li>Рейтинг:{{ star.avg | floatformat }}<span class="fa fa-star" aria-hidden="true"></span></li>
+                <li>{% trans 'Рейтинг:' %}{{ star.avg | floatformat }}<span class="fa fa-star" aria-hidden="true"></span></li>
 
             </ul>
             </div>

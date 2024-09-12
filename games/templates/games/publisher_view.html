@@ -1,9 +1,11 @@
 {% extends 'games/main.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
 {% block title %}
-    {{ actor.name }}
+    {{ publisher.name }}
 {% endblock %}
 
 {% block container %}
@@ -31,7 +33,7 @@
         <div class="row sub-para-w3layouts mt-5">
 
             <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
-                About Publisher: {{ publisher.name }}</h3>
+                {% trans 'О издателе:' %} {{ publisher.name }}</h3>
             <p class="editContent">
                 {{ publisher.description|safe }}
             </p>

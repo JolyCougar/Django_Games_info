@@ -1,0 +1,483 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-12 19:48+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: games/templates/account/account_inactive.html:5
+msgid "Аккаунт не активен"
+msgstr "Account not active"
+
+#: games/templates/account/account_inactive.html:8
+msgid "Ваш аккаунт не активен"
+msgstr "Your account is not active"
+
+#: games/templates/account/account_inactive.html:10
+msgid "Этот аккаунт не активен."
+msgstr "This account is not active"
+
+#: games/templates/account/email.html:5
+msgid "Аккаунт"
+msgstr "Account"
+
+#: games/templates/account/email.html:8
+msgid "E-mail Адреса"
+msgstr "E-mail Address"
+
+#: games/templates/account/email.html:10
+msgid "Следующие адреса электронной почты связаны с вашей учетной записью:"
+msgstr "The following email addresses are associated with your account:"
+
+#: games/templates/account/email.html:24
+msgid "Подтвержденный"
+msgstr "Verified"
+
+#: games/templates/account/email.html:26
+msgid "Не подтвержденный"
+msgstr "Unverified"
+
+#: games/templates/account/email.html:28
+msgid "Основной"
+msgstr "Main"
+
+#: games/templates/account/email.html:34
+msgid "Сделать основным"
+msgstr "Set as main"
+
+#: games/templates/account/email.html:35
+msgid "Повторно отправить код активации"
+msgstr "Resend activation code"
+
+#: games/templates/account/email.html:36
+msgid "Удалить"
+msgstr "Delete"
+
+#: games/templates/account/email.html:43
+msgid "Внимание!:"
+msgstr "Attention!:"
+
+#: games/templates/account/email.html:43
+msgid ""
+"В настоящее время у вас не настроен адрес электронной почты. Вам "
+"действительно следует добавить адрес электронной почты, чтобы вы могли "
+"получать уведомления, сбрасывать пароль и т. д."
+msgstr ""
+"You do not currently have an email address configured. You "
+"you should really add an email address so you can "
+"receive notifications, reset password, etc."
+
+#: games/templates/account/email.html:48
+msgid "Добавить E-mail Адрес"
+msgstr "Add E-mail address"
+
+#: games/templates/account/email.html:53
+msgid "Добавить E-mail"
+msgstr "Add E-mail"
+
+#: games/templates/account/email.html:62
+msgid "Вы точно хотите удалить данный адрес?"
+msgstr "Are you sure you want to delete this address?"
+
+#: games/templates/account/email_confirm.html:6
+#: games/templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: games/templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: games/templates/account/email_confirm.html:20
+msgid "Подтвердить"
+msgstr "Accept"
+
+#: games/templates/account/email_confirm.html:27
+#, python-format
+msgid ""
+"Срок действия ссылки для подтверждения по электронной почте истек или она "
+"недействительна. \n"
+"    Пожалуйста <a href=\"%(email_url)s\">отправить новый запрос на "
+"подтверждение по электронной почте</a>.\n"
+msgstr ""
+"The email verification link has expired or is "
+"invalid.\n"
+" Please <a href=\"%(email_url)s\">send a new request to "
+"email confirmation</a>.\n"
+
+#: games/templates/account/login.html:8 games/templates/account/login.html:11
+#: games/templates/account/login.html:16
+msgid "Авторизация"
+msgstr "Sign in"
+
+#: games/templates/account/login.html:38
+msgid "Если вы здесь впервые, тогда сначала"
+msgstr "If this is your first time here, then first"
+
+#: games/templates/account/login.html:39
+msgid "зарегистрируйтесь"
+msgstr "sign up"
+
+#: games/templates/account/login.html:48
+msgid "Войти"
+msgstr "Sign in"
+
+#: games/templates/account/logout.html:5 games/templates/account/logout.html:8
+#: games/templates/account/logout.html:17
+msgid "Выйти"
+msgstr "Sign out"
+
+#: games/templates/account/logout.html:10
+msgid "Вы точно хотите выйти?"
+msgstr "Are you sure you want to go out?"
+
+#: games/templates/account/password_change.html:5
+#: games/templates/account/password_change.html:8
+#: games/templates/account/password_change.html:13
+#: games/templates/account/password_reset_from_key.html:4
+#: games/templates/account/password_reset_from_key.html:7
+msgid "Сменить пароль"
+msgstr "Change password"
+
+#: games/templates/account/password_reset.html:6
+#: games/templates/account/password_reset.html:10
+#: games/templates/account/password_reset.html:20
+msgid "Сбросить пароль"
+msgstr "Reset password"
+
+#: games/templates/account/password_reset.html:15
+msgid ""
+"Забыли пароль? Введите свой адрес электронной почты ниже, и мы вышлем вам "
+"электронное письмо, позволяющее сбросить его."
+msgstr ""
+"Forgot your password? Enter your email address below and we will send you "
+"an email to reset it."
+
+#: games/templates/account/password_reset.html:23
+msgid ""
+"Пожалуйста, свяжитесь с нами, если у вас возникли проблемы со сбросом пароля."
+msgstr ""
+"Please contact us if you are having trouble resetting your password."
+
+#: games/templates/account/password_reset_done.html:6
+#: games/templates/account/password_reset_done.html:9
+msgid "Сброс пароля"
+msgstr "Password reset"
+
+#: games/templates/account/password_reset_done.html:15
+msgid ""
+"Мы отправили вам электронное письмо. \n"
+"        Пожалуйста, свяжитесь с нами, если вы не получили его в течение "
+"нескольких минут."
+msgstr ""
+"We have sent you an email.\n"
+"Please contact us if you have not received it within"
+"a few minutes."
+
+#: games/templates/account/password_reset_from_key.html:7
+msgid "Плохой токен"
+msgstr "Bad token"
+
+#: games/templates/account/password_reset_from_key.html:11
+#, python-format
+msgid ""
+"Ссылка для сброса пароля недействительна, возможно, потому, что она уже "
+"использовалась. \n"
+"            Пожалуйста, запросите <a href=\"%(passwd_reset_url)s\">сброс "
+"нового пароля</a>."
+msgstr ""
+"The password reset link is not valid, possibly because it is already "
+"used.\n"
+" Please request <a href=\"%(passwd_reset_url)s\">reset "
+"new password</a>."
+
+#: games/templates/account/password_reset_from_key.html:18
+msgid "сменить пароль"
+msgstr "change password"
+
+#: games/templates/account/password_reset_from_key.html:21
+#: games/templates/account/password_reset_from_key_done.html:8
+msgid "Ваш пароль теперь изменен."
+msgstr "Your password has now been changed."
+
+#: games/templates/account/password_reset_from_key_done.html:4
+#: games/templates/account/password_reset_from_key_done.html:7
+msgid "Изменить пароль"
+msgstr "Change password"
+
+#: games/templates/account/password_set.html:5
+#: games/templates/account/password_set.html:8
+#: games/templates/account/password_set.html:13
+msgid "Установить пароль"
+msgstr "Set password"
+
+#: games/templates/account/signup.html:5 games/templates/account/signup.html:8
+#: games/templates/include/header.html:33
+msgid "Регистрация"
+msgstr "Sign up"
+
+#: games/templates/account/signup.html:10
+#, python-format
+msgid ""
+"У вас уже есть аккаунт? Тогда, пожалуйста <a "
+"href=\"%(login_url)s\">Авторизуйтесь</a>."
+msgstr ""
+"Do you already have an account? Then please <a "
+"href=\"%(login_url)s\">Login</a>."
+
+#: games/templates/account/signup.html:18
+msgid "Sign Up"
+msgstr ""
+
+#: games/templates/account/signup_closed.html:5
+#: games/templates/account/signup_closed.html:8
+msgid "Регистрация закрыта"
+msgstr "Registration is closed"
+
+#: games/templates/account/signup_closed.html:10
+msgid "Сожалеем, но регистрация на данный момент закрыта."
+msgstr "We are sorry, but registration is currently closed."
+
+#: games/templates/account/snippets/already_logged_in.html:5
+msgid "Заметки"
+msgstr "Notes"
+
+#: games/templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "Вы вошли как %(user_display)s."
+msgstr "You sign in %(user_display)s."
+
+#: games/templates/account/verification_sent.html:5
+#: games/templates/account/verification_sent.html:8
+#: games/templates/account/verified_email_required.html:5
+#: games/templates/account/verified_email_required.html:8
+msgid "Подтвердите свой адрес электронной почты"
+msgstr "Confirm your email address"
+
+#: games/templates/account/verification_sent.html:10
+msgid ""
+"Мы отправили вам электронное письмо для проверки. \n"
+"        Перейдите по предоставленной ссылке, чтобы завершить процесс "
+"регистрации. \n"
+"        Пожалуйста, свяжитесь с нами, если вы не получили его в течение "
+"нескольких минут."
+msgstr ""
+"We have sent you an email for verification.\n"
+" Follow the link provided to complete the process "
+"registration.\n"
+"Please contact us if you have not received it within"
+"a few minutes."
+
+#: games/templates/account/verified_email_required.html:12
+msgid ""
+"Эта часть сайта требует от нас подтверждения того, что\n"
+"ты тот, кем себя выдаешь. Для этого мы требуем, чтобы вы\n"
+"подтвердите право собственности на свой адрес электронной почты. "
+msgstr ""
+"This part of the site requires us to confirm that\n"
+"You are who you say you are. To do this, we require that you\n"
+"Verify ownership of your email address."
+
+#: games/templates/account/verified_email_required.html:16
+msgid ""
+"Мы отправили вам электронное письмо для\n"
+"проверка. Пожалуйста, нажмите на ссылку внутри этого электронного письма. "
+"Пожалуйста\n"
+"свяжитесь с нами, если вы не получите его в течение нескольких минут."
+msgstr ""
+"We have sent you an email for\n"
+"verification. Please click on the link inside this email."
+"Please\n"
+"contact us if you do not receive it within a few minutes."
+
+#: games/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Примечание:</strong> ты все еще можешь <a href=\"%(email_url)s\">\n"
+"    измените свой адрес электронной почты</a>."
+msgstr ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">\n"
+" change your email address</a>."
+
+#: games/templates/games/account.html:6
+msgid "Об аккаунте"
+msgstr "About account"
+
+#: games/templates/games/account.html:11
+msgid "Логин:"
+msgstr "Username"
+
+#: games/templates/games/account.html:12
+msgid "Имя:"
+msgstr "First name"
+
+#: games/templates/games/account.html:13
+msgid "Фамилия:"
+msgstr "Last name"
+
+#: games/templates/games/account.html:15
+msgid "Сменить Email"
+msgstr "Change Email"
+
+#: games/templates/games/account.html:16
+msgid "Подтвержден"
+msgstr "Verify"
+
+#: games/templates/games/account.html:18
+msgid "Не подтвержден"
+msgstr "Unverify"
+
+#: games/templates/games/developer_view.html:34
+msgid "About Developer:"
+msgstr ""
+
+#: games/templates/games/game_detail.html:34
+msgid "Издатель:"
+msgstr "Publishing"
+
+#: games/templates/games/game_detail.html:42
+msgid "Разработчик:"
+msgstr "Developer"
+
+#: games/templates/games/game_detail.html:49
+msgid "Жанр:"
+msgstr "Genre"
+
+#: games/templates/games/game_detail.html:55
+msgid "Платформы:"
+msgstr "Platforms"
+
+#: games/templates/games/game_detail.html:61
+msgid "Релиз:"
+msgstr "Release:"
+
+#: games/templates/games/game_detail.html:64
+msgid "Оценка:"
+msgstr "Grade:"
+
+#: games/templates/games/game_detail.html:97
+msgid "Об игре:"
+msgstr "About game"
+
+#: games/templates/games/game_detail.html:114
+msgid "Отзывы:"
+msgstr "Reviews"
+
+#: games/templates/games/game_detail.html:120
+msgid "Ваш отзыв"
+msgstr "Your review"
+
+#: games/templates/games/game_detail.html:127
+msgid "Ваше имя"
+msgstr "Your name"
+
+#: games/templates/games/game_detail.html:140
+msgid "Отправить"
+msgstr "Send"
+
+#: games/templates/games/game_detail.html:161
+msgid "Ответить"
+msgstr "Answer"
+
+#: games/templates/games/game_list.html:6
+msgid "Главная страница GamesInfo"
+msgstr "Main page GameInfo"
+
+#: games/templates/games/game_list.html:28
+msgid "Платформа:"
+msgstr "Platform:"
+
+#: games/templates/games/game_list.html:38
+msgid "Рейтинг:"
+msgstr "Rating:"
+
+#: games/templates/games/publisher_view.html:36
+msgid "О издателе:"
+msgstr "About the publisher:"
+
+#: games/templates/include/base.html:35
+msgid "Главная страница"
+msgstr "Main page"
+
+#: games/templates/include/footer.html:9
+msgid "GAME INFO - База знаний"
+msgstr "GAME INFO - Base of games"
+
+#: games/templates/include/footer.html:14
+msgid ""
+"Это портал, на котором вы сможете узнать про то какие игры выходили и на "
+"каких платформах =)"
+msgstr ""
+"This is a portal where you can find out what games were released on"
+"which platforms =)"
+
+#: games/templates/include/footer.html:35
+msgid "Контактная информация"
+msgstr "Contact information"
+
+#: games/templates/include/header.html:13
+msgid "Меню"
+msgstr "Menu"
+
+#: games/templates/include/header.html:16
+msgid "Главная"
+msgstr "Main"
+
+#: games/templates/include/header.html:19
+msgid "Категории"
+msgstr "Categories"
+
+#: games/templates/include/header.html:28
+msgid "Выход"
+msgstr "Sign out"
+
+#: games/templates/include/header.html:31
+msgid "Вход"
+msgstr "Sign in"
+
+#: games/templates/include/header.html:51
+msgid "Сменить язык"
+msgstr "Change language"
+
+#: games/templates/include/header.html:62
+msgid "лучший сайт об играх и не только..."
+msgstr "the best site about games and more..."
+
+#: games/templates/include/header.html:63
+msgid "Все о играх"
+msgstr "All about games"
+
+#: games/templates/include/sidebar.html:3
+msgid "Поиск игр:"
+msgstr "Search games:"
+
+#: games/templates/include/sidebar.html:5
+msgid "Введите название..."
+msgstr "Enter a game name..."
+
+#: games/templates/include/sidebar.html:12
+msgid "Жанры:"
+msgstr "Genres:"
+
+#: games/templates/include/sidebar.html:25
+msgid "Игровые платформы:"
+msgstr "Gaming platforms:"
+
+#: games/templates/include/sidebar.html:35
+msgid "Показать выбранные категории"
+msgstr "Show selected categories"
