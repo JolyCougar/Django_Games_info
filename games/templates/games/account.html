@@ -1,19 +1,21 @@
 {% extends 'games/main.html' %}
 
+{% load i18n static %}
+
 {% block title %}
-    Об аккаунте {{ user.username }}
+    {% trans 'Об аккаунте' %} {{ user.username }}
 {% endblock title %}
 
 {% block games %}
     <div>
-        <p>Логин: {{ user.username }}</p>
-        <p>Имя: {{ user.first_name }}</p>
-        <p>Фамилия: {{ user.last_name }}</p>
+        <p>{% trans 'Логин:' %} {{ user.username }}</p>
+        <p>{% trans 'Имя:' %} {{ user.first_name }}</p>
+        <p>{% trans 'Фамилия:' %} {{ user.last_name }}</p>
         <p>Email: {{ user.email }} <a href="{% url 'account_email' %}"
-        >Сменить Email</a> {% if emailaddress.verified %}
-            <span class="verified"> Подтвержден</span>
+        >{% trans 'Сменить Email' %}</a> {% if emailaddress.verified %}
+            <span class="verified">{% trans 'Подтвержден' %}</span>
         {% else %}
-            <span class="unverified">Не подтвержден</span>
+            <span class="unverified">{% trans 'Не подтвержден' %}</span>
         {% endif %}</p>
     </div>
 
