@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+{% load i18n static %}
 <html lang="ru">
 <head>
     <!-- //Meta tag Keywords -->
@@ -32,7 +32,7 @@
     </div>
     <ol class="breadcrumb editContent">
         <li class="breadcrumb-item">
-            <a href="{% url 'games_list' %}" class="editContent">Home</a>
+            <a href="{% url 'games_list' %}" class="editContent">{% trans 'Главная страница' %}</a>
         </li>
         <li class="breadcrumb-item active editContent">{% block title_games %}
         	

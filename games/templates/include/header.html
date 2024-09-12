@@ -10,13 +10,13 @@
                 </h1>
             </div>
 
-            <label for="drop" class="toggle">Menu</label>
+            <label for="drop" class="toggle">{% trans 'Меню' %}</label>
             <input type="checkbox" id="drop">
             <ul class="menu mt-2">
-                <li class="active"><a href="{% url 'games_list' %}">Главная</a></li>
+                <li class="active"><a href="{% url 'games_list' %}">{% trans 'Главная' %}</a></li>
                 <li>
                     <!-- First Tier Drop Down -->
-                    <label for="drop-2" class="toggle">Категории <span class="fa fa-angle-down"
+                    <label for="drop-2" class="toggle">{% trans 'Категории' %} <span class="fa fa-angle-down"
                                                                        aria-hidden="true"></span> </label>
 
                 </li>
@@ -25,12 +25,12 @@
                         <a href="{% url 'account' user.pk %}"
                            style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">{{ user.username | upper }}</a>
                         <a href="{% url 'account_logout' %}"
-                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Выход</a>
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">{% trans 'Выход' %}</a>
                     {% else %}
                         <a href="{% url 'account_login' %}"
-                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Вход</a>
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">{% trans 'Вход' %}</a>
                         <a href="{% url 'account_signup' %}"
-                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Регистрация</a>
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">{% trans 'Регистрация' %}</a>
                     {% endif %}
                 </li>
             
@@ -48,7 +48,7 @@
                                 </option>
                             {% endfor %}
                         </select>
-                        <input type="submit" value="Сменить язык">
+                        <input type="submit" value="{% trans 'Сменить язык' %}">
                     </form>
                 </li>
             </ul>
