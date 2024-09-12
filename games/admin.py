@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+from modeltranslation.admin import TranslationAdmin
 from .models import (Game, GamePlatform,
                      Genres, Rating, Review,
                      RatingStar, Developer, Publisher,
@@ -25,7 +26,7 @@ class ReviewInline(admin.TabularInline):
 
 
 @admin.register(Genres)
-class GenresAdmin(admin.ModelAdmin):
+class GenresAdmin(TranslationAdmin):
     list_display = ("name", "url")
 
 
@@ -35,7 +36,7 @@ class GamePlatformAdmin(admin.ModelAdmin):
 
 
 @admin.register(Game)
-class GameAdmin(admin.ModelAdmin):
+class GameAdmin(TranslationAdmin):
     list_display = ("name", "url", "draft")
     list_filter = ("name", "game_platform",)
     search_fields = ("name", "genres__name",)
@@ -45,12 +46,12 @@ class GameAdmin(admin.ModelAdmin):
 
 
 @admin.register(Publisher)
-class PublisherAdmin(admin.ModelAdmin):
+class PublisherAdmin(TranslationAdmin):
     list_display = ("name",)
 
 
 @admin.register(Developer)
-class DeveloperAdmin(admin.ModelAdmin):
+class DeveloperAdmin(TranslationAdmin):
     list_display = ("name",)
 
 
@@ -74,7 +75,7 @@ class RatingStarAdmin(admin.ModelAdmin):
 
 
 @admin.register(GamesImages)
-class GamesImagesAdmin(admin.ModelAdmin):
+class GamesImagesAdmin(TranslationAdmin):
     """ Images from Game """
     list_display = ("title", "game", "get_image")
     readonly_fields = ("get_image",)

@@ -60,14 +60,14 @@ class Publisher(models.Model):
 
 class Game(models.Model):
     name = models.CharField("name", max_length=100)
-    description = models.TextField("Description")
-    poster = models.ImageField("Poster", upload_to=game_poster_directory_path)
+    description = models.TextField("Description", null=True)
+    poster = models.ImageField("Poster", upload_to=game_poster_directory_path, null=True)
     release = models.DateField("Release game", default=date.today, null=True)
     game_platform = models.ManyToManyField(GamePlatform, null=True)
     url = models.SlugField(max_length=130, unique=True)
     publisher = models.ManyToManyField(Publisher, verbose_name="publisher", null=True, related_name="game_publisher")
     developer = models.ManyToManyField(Developer, verbose_name="developer", null=True, related_name="game_developer")
-    genres = models.ManyToManyField(Genres, verbose_name="genres")
+    genres = models.ManyToManyField(Genres, verbose_name="genres", null=True)
     draft = models.BooleanField("Draft", default=False)
 
     def __str__(self) -> str:
