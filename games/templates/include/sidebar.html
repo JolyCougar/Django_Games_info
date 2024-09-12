@@ -1,6 +1,6 @@
 {% load i18n game_tag %}
 <div class="search-bar w3layouts-newsletter">
-    <h3 class="sear-head editContent">Поиск игр:</h3>
+    <h3 class="sear-head editContent">{% trans 'Поиск игр:' %}</h3>
     <form action="{% url 'search' %}" method="get" class="d-flex editContent">
         <input type="search" placeholder="{% trans 'Введите название...' %}" name="q" class="form-control" required="" aria-label="">
         <button type="submit" class="btn1 btn"><span class="fa fa-search" aria-hidden="true"></span></button>
@@ -22,7 +22,7 @@
 <!-- // preference -->
 <!-- discounts -->
 <div class="left-side">
-        <h3 class="sear-head editContent">Игровые платформы:</h3>
+        <h3 class="sear-head editContent">{% trans 'Игровые платформы:' %}</h3>
         <ul class="w3layouts-box-list">
             {% for platform in view.get_platform %}
                 <li class="editContent">
@@ -32,7 +32,7 @@
             {% endfor %}
         </ul>
     </div>
-    <button type="submit" class="btn1 btn">Показать выбранные категории</button>
+    <button type="submit" class="btn1 btn">{% trans 'Показать выбранные категории' %}</button>
 </form>
 <!-- //discounts -->
 
