@@ -6,17 +6,21 @@
     {% trans 'Об аккаунте' %} {{ user.username }}
 {% endblock title %}
 
+{% block title_games %}
+    {% trans 'Об аккаунте' %} {{ user.username }}
+{% endblock title_games %}
+
 {% block games %}
     <div>
         <p>{% trans 'Логин:' %} {{ user.username }}</p>
         <p>{% trans 'Имя:' %} {{ user.first_name }}</p>
         <p>{% trans 'Фамилия:' %} {{ user.last_name }}</p>
-        <p>Email: {{ user.email }} <a href="{% url 'account_email' %}"
-        >{% trans 'Сменить Email' %}</a> {% if emailaddress.verified %}
+        <p>Email: {{ user.email }} | {% if emailaddress.verified %}
             <span class="verified">{% trans 'Подтвержден' %}</span>
         {% else %}
             <span class="unverified">{% trans 'Не подтвержден' %}</span>
-        {% endif %}</p>
+        {% endif %}<a href="{% url 'account_email' %}"
+        >{% trans 'Сменить Email' %}</a> </p>
     </div>
 
 {% endblock games %}

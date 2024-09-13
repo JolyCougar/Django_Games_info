@@ -5,8 +5,9 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from .forms import RatingForm, ReviewForm
 from django.db.models import Avg
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+
 
 from .models import Game, Publisher, Developer, Rating, Genres, GamePlatform
 
@@ -128,7 +129,8 @@ class Search(GenrePlatform, ListView, LoginRequiredMixin):
         return context
 
 
-class AccountInfo(GenrePlatform, DetailView):
+class AccountInfo(GenrePlatform, DetailView, UserPassesTestMixin):
     queryset = User.objects.all()
     template_name = "games/account.html"
     context_object_name = "user"
+

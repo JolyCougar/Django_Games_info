@@ -4,6 +4,11 @@
 
 {% block head_title %}{% trans "Аккаунт" %}{% endblock %}
 
+{% block title_games %}
+	{% trans 'E-mail' %}
+{% endblock %}
+
+
 {% block content %}
     <h1>{% trans "E-mail Адреса" %}</h1>
 {% if user.emailaddress_set.all %}
