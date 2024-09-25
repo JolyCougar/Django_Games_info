@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from games.models import Game, Review, Rating, Publisher, Developer
+from games.models import Game, Review, Rating, Publisher, Developer, Genres
 
 
 class FilterReviewListSerializer(serializers.ListSerializer):
@@ -19,21 +19,33 @@ class RecursiveSerializer(serializers.Serializer):
         return serializer.data
 
 
+class GenreListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genres
+        fields = ("id", "name")
+
+
 class DeveloperListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Developer
-        fields = ("id", "name", "logo")
+        fields = ("id", "name", "logo", "description")
 
 
 class PublisherListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publisher
-        fields = ("id", "name", "logo")
+        fields = ("id", "name", "logo", "description")
 
 
 class DeveloperDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Developer
+        fields = "__all__"
+
+
+class GenreDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genres
         fields = "__all__"
 
 
@@ -46,10 +58,11 @@ class PublisherDetailSerializer(serializers.ModelSerializer):
 class GamesListSerializer(serializers.ModelSerializer):
     rating_user = serializers.BooleanField()
     middle_star = serializers.IntegerField()
+    genres = GenreListSerializer(read_only=True, many=True)
 
     class Meta:
         model = Game
-        fields = ("id", "name", "developer", "publisher", "rating_user", "middle_star")
+        fields = ("id", "name", "genres", "rating_user", "middle_star")
 
 
 class ReviewCreateSerializer(serializers.ModelSerializer):
@@ -74,8 +87,7 @@ class GameDetailSerializer(serializers.ModelSerializer):
     category = serializers.SlugRelatedField(slug_field="name", read_only=True)
     publisher = PublisherListSerializer(read_only=True, many=True)
     developer = DeveloperListSerializer(read_only=True, many=True)
-    genres = serializers.SlugRelatedField(slug_field="name", read_only=True, many=True)
-    reviews = ReviewSerializer(many=True)
+    genres = GenreListSerializer(read_only=True, many=True)
 
     class Meta:
         model = Game

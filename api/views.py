@@ -2,11 +2,12 @@ from django.db import models
 from rest_framework import generics, permissions, viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 from .service import get_client_ip, GamesFilter, PaginationGames
-from games.models import Game, Developer, Publisher, Review
+from games.models import Game, Developer, Publisher, Genres
 from .serializers import (GamesListSerializer, GameDetailSerializer,
                           ReviewCreateSerializer, CreateRatingSerializer,
                           PublisherListSerializer, PublisherDetailSerializer,
-                          DeveloperListSerializer, DeveloperDetailSerializer)
+                          DeveloperListSerializer, DeveloperDetailSerializer,
+                          GenreListSerializer, GenreDetailSerializer)
 
 
 class GameViewSet(viewsets.ReadOnlyModelViewSet):
@@ -49,6 +50,16 @@ class PublisherViewSet(viewsets.ReadOnlyModelViewSet):
             return PublisherListSerializer
         elif self.action == 'retrieve':
             return PublisherDetailSerializer
+
+
+class GenresViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Genres.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return GenreListSerializer
+        elif self.action == 'retrieve':
+            return GenreDetailSerializer
 
 
 class DeveloperViewSet(viewsets.ReadOnlyModelViewSet):
