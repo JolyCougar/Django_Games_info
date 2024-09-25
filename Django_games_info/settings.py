@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
+    'rest_framework',
+    'rest_framework.authtoken',
     'games.apps.GamesConfig',
     'allauth',
     'allauth.account',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -109,6 +111,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 1,
+}
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -131,7 +144,6 @@ LANGUAGES = (
     ('ru', gettext('Russian')),
     ('en', gettext('English')),
 )
-
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
