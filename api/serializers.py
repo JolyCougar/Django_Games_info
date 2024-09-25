@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Game, Review, Rating, Publisher, Developer
+from games.models import Game, Review, Rating, Publisher, Developer
 
 
 class FilterReviewListSerializer(serializers.ListSerializer):
@@ -49,7 +49,7 @@ class GamesListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ("id", "name", "developer", "publisher", "description_short", "rating_user", "middle_star")
+        fields = ("id", "name", "developer", "publisher", "rating_user", "middle_star")
 
 
 class ReviewCreateSerializer(serializers.ModelSerializer):
