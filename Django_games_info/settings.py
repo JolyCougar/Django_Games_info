@@ -98,8 +98,9 @@ WSGI_APPLICATION = 'Django_games_info.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'postgresql',
+        'USER': 'postgresql',
+        'PASSWORD': 'postgresql',
         'HOST': 'game_db',
         'PORT': '5432',
     }
