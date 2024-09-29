@@ -1,0 +1,28 @@
+version: "3.7"
+
+
+services:
+  game_db:
+    image: postgres:16-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgresql
+      - POSTGRES_PASSWORD=postgresql
+      - POSTGRES_DB=postgresql
+  django:
+    container_name: games_info
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: bash -c "python /usr/src/games_info/manage.py migrate --noinput &&
+            python /usr/src/games_info/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/usr/src/games_info
+    ports:
+      - 8000:8000
+    depends_on:
+      - game_db
+
+volumes:
+  pg_data:
