@@ -84,3 +84,7 @@ class GamesImagesAdmin(TranslationAdmin):
         return mark_safe(f'<img src={obj.image.url} width="50" height="60"')
 
     get_image.short_description = "image"
+
+
+admin.site.site_title = "Games info"
+admin.site.site_header = "Games info"
